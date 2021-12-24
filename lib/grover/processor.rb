@@ -31,9 +31,7 @@ class Grover
       result['data'].pack('C*')
     ensure
       p 88888888888888888
-      p stdin
-      p 2222222222222
-      # cleanup_process if stdin
+      cleanup_process if stdin
     end
 
     private
@@ -117,15 +115,15 @@ class Grover
     end
 
     def cleanup_process
-      p 333333333
-      stdin.close
-      p 555555555
-      stdout.close
-      p 444444444
-      stderr.close
-      p 666666666
-      wait_thr.join
-      p 777777777
+      # p 333333333
+      # stdin.close
+      # p 555555555
+      # stdout.close
+      # p 444444444
+      # stderr.close
+      # p 666666666
+      # wait_thr.join
+      # p 777777777
     end
   end
 end
