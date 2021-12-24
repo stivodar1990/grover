@@ -15,9 +15,14 @@ class Grover
     end
 
     def convert(method, url_or_html, options)
+      p 'spawn_process1'
       spawn_process
+      p 'ensure_packages_are_initiated1'
       ensure_packages_are_initiated
+      p 'call_js_method'
       result = call_js_method method, url_or_html, options
+      p 'result'
+      p result
       return unless result
       return result if result.is_a?(String)
 
@@ -26,7 +31,7 @@ class Grover
       p 88888888888888888
       p stdin
       p 2222222222222
-      # cleanup_process if stdin
+      cleanup_process if stdin
     end
 
     private
