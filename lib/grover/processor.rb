@@ -55,10 +55,13 @@ class Grover
     def ensure_packages_are_initiated
       p 'ensure_packages_are_initiated'
       input = stdout.gets
+      p 2222222222
       p input
+      p 1111111111111
       raise Grover::Error, "Failed to instantiate worker process:\n#{stderr.read}" if input.nil?
 
       result = JSON.parse(input)
+      p 4444444444444444
       return if result[0] == 'ok'
 
       p 'cleanup_process'
