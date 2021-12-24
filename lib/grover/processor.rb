@@ -25,7 +25,8 @@ class Grover
     ensure
       p 88888888888888888
       p stdin
-      cleanup_process if stdin
+      p 2222222222222
+      # cleanup_process if stdin
     end
 
     private
