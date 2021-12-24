@@ -23,6 +23,8 @@ class Grover
 
       result['data'].pack('C*')
     ensure
+      p 88888888888888888
+      p stdin
       cleanup_process if stdin
     end
 
@@ -31,20 +33,29 @@ class Grover
     attr_reader :app_root, :stdin, :stdout, :stderr, :wait_thr
 
     def spawn_process
+      p 'spawn_process'
       @stdin, @stdout, @stderr, @wait_thr = Open3.popen3(
         'node',
         File.expand_path(File.join(__dir__, 'js/processor.js')),
         chdir: app_root
       )
+      p "@stdin"
+      p @stdin
+      p @stdout
+      p @stderr
+      p @wait_thr
     end
 
     def ensure_packages_are_initiated
+      p 'ensure_packages_are_initiated'
       input = stdout.gets
+      p input
       raise Grover::Error, "Failed to instantiate worker process:\n#{stderr.read}" if input.nil?
 
       result = JSON.parse(input)
       return if result[0] == 'ok'
 
+      p 'cleanup_process'
       cleanup_process
       parse_package_error result[1]
     end
@@ -98,10 +109,15 @@ class Grover
     end
 
     def cleanup_process
+      p 333333333
       stdin.close
+      p 555555555
       stdout.close
+      p 444444444
       stderr.close
+      p 666666666
       wait_thr.join
+      p 777777777
     end
   end
 end
