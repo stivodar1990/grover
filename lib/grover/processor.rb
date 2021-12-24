@@ -22,9 +22,11 @@ class Grover
       p 'call_js_method'
       result = call_js_method method, url_or_html, options
       p 'result'
-      p result
       return unless result
       return result if result.is_a?(String)
+
+      cleanup_process if stdin
+      p 111111111111
 
       result['data'].pack('C*')
     ensure
